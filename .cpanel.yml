@@ -4,9 +4,11 @@ deployment:
     - export DEPLOYPATH=/home/$(whoami)/public_html
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp index.tsx $DEPLOYPATH
+    - /bin/cp index.css $DEPLOYPATH
     - /bin/cp App.tsx $DEPLOYPATH
     - /bin/cp types.ts $DEPLOYPATH
     - /bin/cp constants.ts $DEPLOYPATH
     - /bin/cp metadata.json $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
     - /bin/mkdir -p $DEPLOYPATH/components
-    - /bin/cp components/* $DEPLOYPATH/components/
+    - /bin/cp components/*.tsx $DEPLOYPATH/components/

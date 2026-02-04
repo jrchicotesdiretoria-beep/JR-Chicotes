@@ -1,16 +1,18 @@
 
-# Instrução para o Apache servir arquivos .ts e .tsx como JavaScript
+# Forçar o tipo MIME para arquivos TypeScript e JSX
 <IfModule mod_mime.c>
     AddType application/javascript .ts
     AddType application/javascript .tsx
+    AddType text/css .css
 </IfModule>
 
-# Configuração de Cache e Segurança básica
+# Garantir que o servidor não envie o cabeçalho 'nosniff' de forma que bloqueie os módulos
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
+    Header set Content-Type "application/javascript" "expr=%{REQUEST_URI} =~ /\.tsx$/"
+    Header set Content-Type "application/javascript" "expr=%{REQUEST_URI} =~ /\.ts$/"
 </IfModule>
 
-# Fallback para Single Page Application (opcional, mas recomendado)
+# Configuração de redirecionamento para Single Page Application
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
