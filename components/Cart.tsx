@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { X, Trash2, Send, ChevronRight } from 'lucide-react';
-import { CartItem, UserSession } from '../types';
-import { COLORS, WHATSAPP_NUMBER } from '../constants';
+import { CartItem, UserSession } from '../types.ts';
+import { COLORS, WHATSAPP_NUMBER } from '../constants.ts';
 
 interface CartProps {
   items: CartItem[];
@@ -27,7 +26,7 @@ export const Cart: React.FC<CartProps> = ({ items, user, onRemove, onClose, isOp
       message += `✅ *${item.product.id}* - ${item.product.application}\n`;
       message += `   Qtd: ${item.quantity} | Unit: R$ ${item.appliedPrice.toFixed(2)}\n`;
       message += `   Subtotal: R$ ${(item.quantity * item.appliedPrice).toFixed(2)}\n`;
-      message += `   Ref TC: ${item.product.codTC} | Ref Rainha: ${item.product.codRainha}\n\n`;
+      message += `   Ref 01: ${item.product.ref01} | Ref 02: ${item.product.ref02}\n\n`;
     });
 
     message += `--------------------------------\n`;

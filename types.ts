@@ -8,8 +8,8 @@ export enum UserTier {
 export interface Product {
   id: string; // JR ID
   price: number;
-  codTC: string;
-  codRainha: string;
+  ref01: string; // Anteriormente codTC
+  ref02: string; // Anteriormente codRainha
   application: string;
   imageUrl: string;
 }

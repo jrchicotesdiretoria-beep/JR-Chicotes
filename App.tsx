@@ -1,10 +1,9 @@
-
 import React, { useState, useMemo } from 'react';
-import { UserSession, UserTier, Product, CartItem } from './types';
-import { MOCK_PRODUCTS, COLORS } from './constants';
-import { Header } from './components/Header';
-import { ProductCard } from './components/ProductCard';
-import { Cart } from './components/Cart';
+import { UserSession, UserTier, Product, CartItem } from './types.ts';
+import { MOCK_PRODUCTS, COLORS } from './constants.ts';
+import { Header } from './components/Header.tsx';
+import { ProductCard } from './components/ProductCard.tsx';
+import { Cart } from './components/Cart.tsx';
 import { Search, ShieldCheck, ChevronRight } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -21,8 +20,8 @@ const App: React.FC = () => {
       const matchesSearch = 
         p.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
         p.application.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.codTC.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.codRainha.toLowerCase().includes(searchTerm.toLowerCase());
+        p.ref01.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        p.ref02.toLowerCase().includes(searchTerm.toLowerCase());
       
       return matchesSearch;
     });
@@ -34,7 +33,7 @@ const App: React.FC = () => {
       setUser({
         name: loginForm.name,
         cnpj: loginForm.cnpj,
-        tier: UserTier.RETAILER // Default tier when form selection is removed
+        tier: UserTier.RETAILER 
       });
     }
   };
@@ -136,7 +135,7 @@ const App: React.FC = () => {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <input 
               type="text"
-              placeholder="Buscar por Código JR, Rainha, TC ou Aplicação..."
+              placeholder="Buscar por Código JR, Ref 01, Ref 02 ou Aplicação..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-100 shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all text-sm font-medium bg-white"

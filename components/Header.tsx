@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { ShoppingCart, LogOut, User } from 'lucide-react';
-import { Logo } from './Logo';
-import { UserSession } from '../types';
-import { COLORS } from '../constants';
+import { Logo } from './Logo.tsx';
+import { UserSession } from '../types.ts';
+import { COLORS } from '../constants.ts';
 
 interface HeaderProps {
   user: UserSession;

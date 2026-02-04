@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
-import { Product, UserTier } from '../types';
-import { COLORS, PRICING_TIER_FACTORS, WHOLESALE_MIN_QTY, WHOLESALE_DISCOUNT } from '../constants';
+import { Product, UserTier } from '../types.ts';
+import { COLORS, PRICING_TIER_FACTORS } from '../constants.ts';
 import { Plus, Minus, ShoppingBag } from 'lucide-react';
 
 interface ProductCardProps {
@@ -13,10 +12,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product, userTier, onAddToCart }) => {
   const [qty, setQty] = useState<number>(1);
 
-  const baseTierPrice = product.price * PRICING_TIER_FACTORS[userTier];
-  const wholesalePrice = baseTierPrice * WHOLESALE_DISCOUNT;
-  
-  const currentPrice = qty >= WHOLESALE_MIN_QTY ? wholesalePrice : baseTierPrice;
+  const currentPrice = product.price * PRICING_TIER_FACTORS[userTier];
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full hover:shadow-lg transition-shadow">
@@ -37,30 +33,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, userTier, onA
         </div>
 
         <div className="grid grid-cols-2 gap-2 mb-4 text-[11px] text-gray-500">
-          <div className="bg-gray-50 p-1.5 rounded">
-            <span className="block font-bold text-gray-400">REF TC</span>
-            {product.codTC}
+          <div className="bg-gray-50 p-1.5 rounded text-center">
+            <span className="block font-bold text-gray-400 uppercase text-[9px]">Ref 01</span>
+            <span className="font-medium text-gray-700">{product.ref01}</span>
           </div>
-          <div className="bg-gray-50 p-1.5 rounded">
-            <span className="block font-bold text-gray-400">REF RAINHA</span>
-            {product.codRainha}
+          <div className="bg-gray-50 p-1.5 rounded text-center">
+            <span className="block font-bold text-gray-400 uppercase text-[9px]">Ref 02</span>
+            <span className="font-medium text-gray-700">{product.ref02}</span>
           </div>
         </div>
 
         <div className="mt-auto space-y-3">
-          <div className="flex items-end justify-between">
+          <div className="flex items-end justify-between border-t border-gray-50 pt-3">
             <div className="flex flex-col">
-              <span className="text-[10px] text-gray-400 font-bold uppercase">Preço Unit.</span>
+              <span className="text-[10px] text-gray-400 font-bold uppercase">Preço Unitário</span>
               <span className="text-lg font-black text-gray-900">
                 R$ {currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
-            {qty < WHOLESALE_MIN_QTY && (
-              <div className="text-right">
-                <span className="block text-[10px] text-orange-500 font-bold">PROMO 250+</span>
-                <span className="text-xs font-semibold text-gray-400">R$ {wholesalePrice.toFixed(2)}</span>
-              </div>
-            )}
           </div>
 
           <div className="flex items-center gap-2">

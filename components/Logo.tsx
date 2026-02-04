@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { COLORS } from '../constants';
+import { COLORS } from '../constants.ts';
 
 export const Logo: React.FC<{ size?: 'sm' | 'md' | 'lg' }> = ({ size = 'md' }) => {
   const sizes = {
