@@ -1,0 +1,16 @@
+
+/* Estilos Globais JR Chicotes */
+:root {
+  --jr-orange: #F26522;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
